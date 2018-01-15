@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1 style="margin-left: 40px;">
+      Welcome to {{ title }}!
+    </h1>
+    <div class="col-md-4">
+    <h2>Form to enter data</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">First Name</label> <input type="text"
+          class="form-control" placeholder="Enter First Name..." id="firstName"
+          required [(ngModel)]="user.firstName" name="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label> <input type="text"
+          class="form-control" placeholder="Enter Last Name..." id="lastName"
+          required [(ngModel)]="user.lastName" name="lastName">
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+    </div>
+    <div class="col-md-4">
+      <h2>Content from Firebase</h2>
+      <pre *ngFor="let user of users | async">
+        {{user.firstName}} | {{user.lastName}}
+      </pre>
+    </div>
+  </div>
+</div>
+
